@@ -19,13 +19,7 @@ class App extends React.Component {
       },
     };
 
-    fetch(url, options)
-      .then(data => JSON.parse(data))
-      .then(res => {
-        //setState
-        return;
-      })
-      .catch();
+    fetch(url, options).then();
   }
 
   render() {

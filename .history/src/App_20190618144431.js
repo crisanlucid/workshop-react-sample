@@ -6,11 +6,6 @@ class App extends React.Component {
   componentDidMount() {
     // app.post('/api/v1/superheroes', (req, res) => {}
     let url = 'http://localhost:8000/api/v1/superheroes';
-
-    let data = {
-      name: 'Thor',
-    };
-
     let options = {
       method: 'POST', // or 'PUT'
       body: JSON.stringify(data), // data can be `string` or {object}!
@@ -19,13 +14,7 @@ class App extends React.Component {
       },
     };
 
-    fetch(url, options)
-      .then(data => JSON.parse(data))
-      .then(res => {
-        //setState
-        return;
-      })
-      .catch();
+    fetch(url, options).then();
   }
 
   render() {
