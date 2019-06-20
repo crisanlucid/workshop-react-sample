@@ -6,6 +6,7 @@ class App extends React.Component {
   componentDidMount() {
     console.log('sss');
     console.log('sss_1');
+    console.log('sss_2');
     // app.post('/api/v1/superheroes', (req, res) => {}
     let url = 'http://localhost:8000/api/v1/superheroes';
 
