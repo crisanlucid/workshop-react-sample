@@ -59,3 +59,4 @@ if [ -n "$(jsfiles)" ]; then
     exit 1
   fi
 fi
+echo "END..."
