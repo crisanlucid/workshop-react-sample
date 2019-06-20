@@ -4,8 +4,6 @@ import './App.css';
 
 class App extends React.Component {
   componentDidMount() {
-    console.log('sss');
-    console.log('sss 1');
     // app.post('/api/v1/superheroes', (req, res) => {}
     let url = 'http://localhost:8000/api/v1/superheroes';
 

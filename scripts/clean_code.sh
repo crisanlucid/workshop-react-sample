@@ -17,7 +17,6 @@ fi
 
 # If you want to allow non-ASCII filenames set this variable to true.
 allownonascii=$(git config --bool hooks.allownonascii)
-
 # Redirect output to stderr.
 exec 1>&2
 
@@ -46,17 +45,29 @@ EOF
 fi
 
 # If there are whitespace errors, print the offending file names and fail.
-exec git diff-index --check --cached $against --
+# exec git diff-index --check --cached $against --
 
-alias jsfiles='find . -type f -name "*.js" | xargs git diff --cached --name-only $against'
-if [ -n "$(jsfiles)" ]; then
-  if jsfiles | xargs grep --color --with-filename -n "debugger"; then
-    echo "Error commiting changes: Please remove debugger"
-    exit 1
-  fi
-  if jsfiles | xargs grep --color --with-filename -n "console.log("; then
-    echo "Error commiting changes: Please remove all console.log()!"
-    exit 1
-  fi
-fi
+echo "Searching for console.log()..."
+FILES_PATTERN='\.(js|coffee)(\..+)?$'
+FORBIDDEN='debugger'
+git diff --cached --name-only | \
+    grep -E $FILES_PATTERN | \
+    GREP_COLOR='4;5;37;41' xargs grep --color --with-filename -n $FORBIDDEN && echo "COMMIT REJECTED Found '$FORBIDDEN' references. Please remove them before commiting" && exit 1
+
+FORBIDDEN='console.log'
+git diff --cached --name-only | \
+    grep -E $FILES_PATTERN | \
+    GREP_COLOR='4;5;37;41' xargs grep --color --with-filename -n $FORBIDDEN && echo "COMMIT REJECTED Found $FORBIDDEN references. Please remove them before commiting" && exit 1
+
+# alias jsfiles='find . -type f -name "*.js" | xargs git diff --cached --name-only $against'
+# if [ -n "$(jsfiles)" ]; then
+#   if jsfiles | xargs grep --color --with-filename -n "debugger"; then
+#     echo "Error commiting changes: Please remove debugger"
+#     exit 1
+#   fi
+#   if jsfiles | xargs grep --color --with-filename -n "console.log("; then
+#     echo "Error commiting changes: Please remove all console.log()!"
+#     exit 1
+#   fi
+# fi
 echo "END..."
