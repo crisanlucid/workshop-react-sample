@@ -9,6 +9,7 @@ class App extends React.Component {
     console.log('sss_2');
     console.log('sss_3');
     console.log('sss_4');
+    console.log('sss_5');
     // app.post('/api/v1/superheroes', (req, res) => {}
     let url = 'http://localhost:8000/api/v1/superheroes';
 
