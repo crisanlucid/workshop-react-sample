@@ -34,7 +34,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "sh scripts/clean_code.sh"
+      "pre-commit": "sh scripts/clean_code.sh",
+      "commit-msg": "echo $HUSKY_GIT_PARAMS"
     }
   }
 }
