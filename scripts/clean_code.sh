@@ -6,7 +6,7 @@
 # it wants to stop the commit.
 #
 # To enable this hook, rename this file to "pre-commit".
-echo "CHECKING..."
+# echo "CHECKING..."
 if git rev-parse --verify HEAD >/dev/null 2>&1
 then
 	against=HEAD
@@ -58,16 +58,3 @@ FORBIDDEN='console.log'
 git diff --cached --name-only | \
     grep -E $FILES_PATTERN | \
     GREP_COLOR='4;5;37;41' xargs grep --color --with-filename -n $FORBIDDEN && echo "COMMIT REJECTED Found $FORBIDDEN references. Please remove them before commiting" && exit 1
-
-# alias jsfiles='find . -type f -name "*.js" | xargs git diff --cached --name-only $against'
-# if [ -n "$(jsfiles)" ]; then
-#   if jsfiles | xargs grep --color --with-filename -n "debugger"; then
-#     echo "Error commiting changes: Please remove debugger"
-#     exit 1
-#   fi
-#   if jsfiles | xargs grep --color --with-filename -n "console.log("; then
-#     echo "Error commiting changes: Please remove all console.log()!"
-#     exit 1
-#   fi
-# fi
-echo "END..."
