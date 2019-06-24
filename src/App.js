@@ -3,33 +3,12 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends React.Component {
-  componentDidMount() {
-    // app.post('/api/v1/superheroes', (req, res) => {}
-    let url = 'http://localhost:8000/api/v1/superheroes';
-
-    let data = {
-      name: 'Thor',
-    };
-
-    let options = {
-      method: 'POST', // or 'PUT'
-      body: JSON.stringify(data), // data can be `string` or {object}!
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    };
-
-    fetch(url, options)
-      .then(data => JSON.parse(data))
-      .then(res => {
-        //setState
-        return;
-      })
-      .catch();
-  }
-
   render() {
-    return <div>My App</div>;
+    return (
+      <div>
+        <button id='Button-click' />
+      </div>
+    );
   }
 }
 
