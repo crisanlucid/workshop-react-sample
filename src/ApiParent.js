@@ -10,7 +10,7 @@ class ApiParent extends Component {
         latitude: 0,
       },
       forceUpdate: false,
-      title: ''
+      title: '',
     };
 
     console.log('[ApiParent.js] constructor');
@@ -37,29 +37,31 @@ class ApiParent extends Component {
     console.log('props', props);
     console.log('state', state);
 
-     if (props.title !== state.title) {
-       return {
-         title: props.title,
-       };
-     }
+    if (props.title !== state.title) {
+      return {
+        title: props.title,
+      };
+    }
   }
 
-  componentWillUnmount(){
-    
-  }
+  componentWillUnmount() {}
 
-  updateLocation(newState = {}) {
-    fetch('http://api.open-notify.org/iss-now.json')
-      .then(response => response.json())
-      .then(data =>
-        this.setState({
-          locationSatelite: data.iss_position,
-          ...newState,
-        }),
-      )
-      .then(() => console.log('state', this.state))
-      .catch(error => console.log('error 1', error));
-  }
+  updateLocation = async (newState = {}) => {
+    try {
+      let response = await fetch('http://api.open-notify.org/iss-now.json');
+
+      let data = await response.json();
+
+      this.setState({
+        locationSatelite: data.iss_position,
+        ...newState,
+      });
+
+      console.log('state', this.state);
+    } catch (error) {
+      console.log('error 1', error);
+    }
+  };
 
   componentDidUpdate(nextProps) {
     console.log('[ApiParent.js] componentDidUpdate');
