@@ -26,25 +26,10 @@ class ApiParent extends Component {
     });
     debugger;
 
-    finalFormList.map(elem => {
-      this.setState({
-        [elem.name]: [elem.value],
-      });
+    this.setState({
+      [finalFormList.name]: [finalFormList.value],
     });
-
     console.log(e.target.value);
-  };
-
-  calculatorCalories = () => {
-    switch (1) {
-      case 1:
-        break;
-
-      default:
-        break;
-    }
-
-    return;
   };
 
   render() {

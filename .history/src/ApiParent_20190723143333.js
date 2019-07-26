@@ -35,18 +35,6 @@ class ApiParent extends Component {
     console.log(e.target.value);
   };
 
-  calculatorCalories = () => {
-    switch (1) {
-      case 1:
-        break;
-
-      default:
-        break;
-    }
-
-    return;
-  };
-
   render() {
     console.log('[ApiParent.js] render...');
     return (

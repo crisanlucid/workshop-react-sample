@@ -13,38 +13,10 @@ class ApiParent extends Component {
     console.log('[ApiParent.js] constructor');
   }
 
-  onSubmitHandler = e => {
-    e.preventDefault();
-    const formFields = ['input', 'select'];
-    // const formList = e.target.filter(elem => {
-    //   console.log(elem);
-    //   return elem;
-    // });
-    const formList = Array.from(e.target.children);
-    let finalFormList = formList.filter(elem => {
-      return formFields.includes(elem.localName);
-    });
-    debugger;
+  onSubmitHandler = (e) => {
+     e.preventDefault();
 
-    finalFormList.map(elem => {
-      this.setState({
-        [elem.name]: [elem.value],
-      });
-    });
-
-    console.log(e.target.value);
-  };
-
-  calculatorCalories = () => {
-    switch (1) {
-      case 1:
-        break;
-
-      default:
-        break;
-    }
-
-    return;
+     console.log(e.target)l;
   };
 
   render() {
@@ -55,12 +27,11 @@ class ApiParent extends Component {
           <label>select animal:</label>
           <select name='animal'>
             <option value='1'>Dog</option>
-            <option value='2'>Cat</option>
           </select>
           <label>Kg:</label>
           <input type='text' name='kg' value='0' placeholder='Kg' />
           <input type='checkbox' name='neuted' value='0' />
-          <button type='submit'>Calculate</button>
+          <button type="submit">Calculate</button>
         </form>
         <h2>Calculate</h2>
         <input type='text' name='calc' value='0' placeholder='total calory' />

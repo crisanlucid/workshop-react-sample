@@ -6,7 +6,7 @@ import ApiParent from './ApiParent';
 function App() {
   return (
     <div className='App'>
-      <ApiParent title='Calory Calculator' />
+      <ApiParent title='My Title' />
     </div>
   );
 }

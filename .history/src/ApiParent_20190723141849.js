@@ -16,35 +16,12 @@ class ApiParent extends Component {
   onSubmitHandler = e => {
     e.preventDefault();
     const formFields = ['input', 'select'];
-    // const formList = e.target.filter(elem => {
-    //   console.log(elem);
-    //   return elem;
-    // });
-    const formList = Array.from(e.target.children);
-    let finalFormList = formList.filter(elem => {
-      return formFields.includes(elem.localName);
+    const formList = e.target.filter(elem => {
+      console.log(elem);
+      return elem;
     });
     debugger;
-
-    finalFormList.map(elem => {
-      this.setState({
-        [elem.name]: [elem.value],
-      });
-    });
-
     console.log(e.target.value);
-  };
-
-  calculatorCalories = () => {
-    switch (1) {
-      case 1:
-        break;
-
-      default:
-        break;
-    }
-
-    return;
   };
 
   render() {

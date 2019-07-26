@@ -22,29 +22,11 @@ class ApiParent extends Component {
     // });
     const formList = Array.from(e.target.children);
     let finalFormList = formList.filter(elem => {
-      return formFields.includes(elem.localName);
+      console.log(elem);
+      return elem;
     });
     debugger;
-
-    finalFormList.map(elem => {
-      this.setState({
-        [elem.name]: [elem.value],
-      });
-    });
-
     console.log(e.target.value);
-  };
-
-  calculatorCalories = () => {
-    switch (1) {
-      case 1:
-        break;
-
-      default:
-        break;
-    }
-
-    return;
   };
 
   render() {
